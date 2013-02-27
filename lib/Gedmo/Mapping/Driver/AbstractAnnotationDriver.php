@@ -82,7 +82,11 @@ abstract class AbstractAnnotationDriver implements AnnotationDriverInterface
      */
     protected function isValidField($meta, $field)
     {
-        $mapping = $meta->getFieldMapping($field);
+        if (method_exists($meta, 'getFieldMapping')) {
+            $mapping = $meta->getFieldMapping($field);
+        } else {
+            $mapping = $meta->getField($field);
+        }
 
         return $mapping && in_array($mapping['type'], $this->validTypes);
     }

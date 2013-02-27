@@ -48,6 +48,7 @@ class Annotation extends AbstractAnnotationDriver
         'text',
         'integer',
         'int',
+        'nodename', // to support PHPCR
     );
 
     /**
